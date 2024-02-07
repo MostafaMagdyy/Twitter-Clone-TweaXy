@@ -1,0 +1,86 @@
+.avatar-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .avatar-preview {
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    width: 300px;
+    height: 300px;
+  }
+  
+  .avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+  }
+  
+  .avatar-actions {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 2;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: '#000';
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .avatar-preview:hover .avatar-actions {
+    opacity: 0.2; 
+  }
+  
+  .avatar-actions button {
+    width: 20px;
+    height: 20px;
+    border: none;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .avatar-actions button::before,
+  .avatar-actions button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2px;
+    height: 12px;
+    background-color: #000;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  
+  .avatar-actions button::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+  
+  .avatar-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .avatar-label {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .avatar-input-field {
+    display: none;
+  }
+  

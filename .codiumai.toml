@@ -1,0 +1,16 @@
+[tests]
+
+
+## Javascript / Typescript: Jest, Mocha, Vitest, Karma, Jasmine, QUnit, React Testing Library
+ framework = "Mocha"
+ use_mocks = true
+
+ num_desired_tests = 2
+
+
+
+[tests.javascript]
+
+ overrideTestRunCwd = "./test"
+
+overrideTestRunScript = "npx jest --runTestsByPath TEST_FILEPATH"

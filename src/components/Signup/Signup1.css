@@ -1,0 +1,182 @@
+.p3 {
+    position: absolute;
+    top: 3px;
+    left: 30px;
+    font-size: 18px;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.signup-input {
+    margin: 15px;
+    padding: 12px;
+    border-radius: 3px;
+    font-size: 20px;
+    width: 420px;
+    outline: none;
+    border: 1px solid #cdcdcd;
+}
+
+.signup-input:focus {
+    border-color: #1da1f2;
+    border-width: 2px;
+}
+
+.signup-header {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    float: left;
+    width: 74%;
+}
+
+.signup-date h4 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    margin-top: 20px;
+    margin-right: 300px;
+}
+
+.signup-date p {
+    font-family: Segoe UI;
+    width: 80%;
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 2px;
+    margin-left: 40px;
+    max-width: 400px;
+    text-align: left;
+}
+
+.Date-picker {
+    display: flex;
+    margin-top: 10px;
+    margin-left: 31px;
+}
+
+.dropdown {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    border: 1px solid #cdcdcd;
+}
+
+.dropdown select {
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 13px;
+    outline: none;
+    background-color: white;
+    font-size: 16px;
+}
+
+.dropdown select:focus {
+    border-color: #1da1f2;
+    /* Set the border color when focused */
+    border-width: 2px;
+    /* Set the border width when focused */
+}
+
+.dropdown select option:checked {
+    background-color: white;
+    /* Twitter's primary color */
+    color: black;
+}
+
+.Button {
+    margin-top: 90px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 70%;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    padding: 5px;
+    height: 50px;
+    width: 410px;
+    background-color: gray;
+    border-radius: 40px;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup2 {
+    text-align: center;
+    margin-left: 10px;
+}
+
+/*Second Page css*/
+.Customize {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.Track {
+    margin-top: 25px;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.DataPersonalization {
+    width: 86%;
+    margin-top: 30px;
+    font-size: 15px;
+}
+
+.checkBox {
+    float: right;
+    margin-right: 40px;
+    margin-top: -60px;
+    width: 20px;
+    height: 20px;
+}
+
+.pass {
+    margin-top: 20px;
+    margin-left: 60px;
+}
+
+.p2 {
+    margin-left: 60px;
+    font-size: 50%;
+}
+
+.input-verfication {
+    margin-right: 25px;
+    margin-top: 25px;
+    padding: 12px;
+    border-radius: 3px;
+    font-size: 20px;
+    width: 420px;
+    outline: none;
+    border: 1px solid #cdcdcd;
+}
+
+/* YourComponent.css */
+
+.signup3 {
+    margin-top: 20px;
+}
+
+label {
+    font-size: 20px;
+    display: flex;
+    align-items: left;
+    font-weight: bold;
+    margin-top: -70px;
+    margin-left: 3px;
+}
+
+.input-error {
+    position: relative;
+}
+
+.error-border {
+    border: 1px solid red;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 4px;
+}
