@@ -1,0 +1,25 @@
+body{
+    --twitter-color:#35a4f4;
+    --twitter-background:#e6ecf0;
+    --twitter-cianHover:#d8eaf8ed;
+    --twitter-greyColor:#536471;
+    --twitter-greyHover:#eae9e9;
+    --widget-background:rgba(38, 90, 101, 0.059);
+    --button-background:rgb(29, 155, 240);
+    --twitter-redColor:rgb(244,33,46);
+  }
+  .home-page{
+     display: flex;
+    height: 100vh;
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+    padding: 0 10px;
+    background-color: white;
+    color: black;
+  } 
+  
+  
+  
