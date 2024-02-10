@@ -1,0 +1,62 @@
+.EditProfile-window-header {
+    width: 100%;
+    max-width: 650px;
+    height: 53px;
+    display: flex;
+
+    align-items: center;
+    position: relative;
+    background: #fff;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+.save-button {
+    height: 30px;
+    width: 12%;
+    font-weight: 700;
+    margin: 12px 0;
+    right: 5%;
+    position: absolute;
+    padding: 0 16px;
+    border-radius: 9999px;
+    border: 1px solid #000;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+    font-size: 15px;
+}
+.edit-text {
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+
+    font-weight: bolder;
+    font-size: 20px;
+    padding: 0.25rem;
+
+    padding-left: 10px;
+    padding-right: 0.75rem;
+}
+div.EditProfile-window-header .EditProfile-window-header-close-button {
+    width: 34px;
+    height: 34px;
+    margin-left: 8px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    position: relative;
+    font-size: 24px;
+}
+
+div.EditProfile-window-header
+    .EditProfile-window-header-close-button:hover::before {
+    content: '';
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.1);
+}
