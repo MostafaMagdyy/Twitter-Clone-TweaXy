@@ -1,0 +1,186 @@
+.sign-up-page-container {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.sign-up-page-body {
+    width: 100%;
+    height: 532px;
+    max-width: 600px;
+    overflow: hidden;
+    overflow-y: auto;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+button.black-button {
+    height: 40px;
+    width: 300px;
+    min-width: 36px;
+    min-height: 36px;
+    margin: 12px 0;
+    padding: 0 16px;
+    border-radius: 9999px;
+    border: 1px solid #000;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background 200ms, box-shadow 200ms;
+}
+
+button.black-button:hover {
+    background: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 5px #000;
+}
+
+button.white-button {
+    height: 40px;
+    width: 300px;
+    min-width: 36px;
+    min-height: 36px;
+    margin: 12px 0;
+    padding: 0 16px;
+    border-radius: 9999px;
+    border: 1px solid #dadce0;
+    background: #fff;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background 200ms, box-shadow 200ms;
+}
+
+button.white-button:hover {
+    background: #e1e8ed;
+    box-shadow: 0 0 5px #e1e8ed;
+}
+
+button.black-wide-button {
+    height: 50px;
+    width: 100%;
+    max-width: 438px;
+    min-width: 36px;
+    min-height: 36px;
+    margin: 12px 0;
+    padding: 0 16px;
+    border-radius: 9999px;
+    border: 1px solid #000;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background 200ms, box-shadow 200ms;
+}
+
+button.black-wide-button:hover {
+    background: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 5px #000;
+}
+
+button.white-wide-button {
+    height: 50px;
+    width: 100%;
+    max-width: 438px;
+    min-width: 36px;
+    min-height: 36px;
+    margin: 12px 0;
+    padding: 0 16px;
+    border-radius: 9999px;
+    border: 1px solid #dadce0;
+    background: #fff;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background 200ms, box-shadow 200ms;
+}
+
+button.white-wide-button:hover {
+    background: #e1e8ed;
+    box-shadow: 0 0 5px #e1e8ed;
+}
+
+.sign-up-uuid-field {
+    height: 60px;
+    width: 300px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.sign-up-span {
+    font-size: large;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 15px;
+}
+
+div.sign-up-page-body p.error-message {
+    color: #ff0000;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+.sign-up-page-body h1 {
+    font-family: 'Arial', sans-serif;
+    font-size: 32px;
+    margin-bottom: 16px;
+    color: #333;
+}
+
+.sign-up-page-body p {
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    margin-top: 16px;
+    color: #555;
+}
+
+.sign-up-page-body a {
+    color: #0066cc;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.sign-up-page-body a:hover {
+    text-decoration: underline;
+}
+
+.sign-up-birth-date {
+    display: flex;
+    flex-direction: row;
+}
+
+.sign-up-birth-date-selection {
+    width: 150px;
+}
+
+@media screen and (max-width: 600px) {
+    .sign-up-page-body {
+        height: auto;
+        padding: 16px;
+    }
+
+    .sign-up-page-body h1 {
+        font-size: 20px;
+    }
+
+    .sign-up-page-body p {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .sign-up-page-body a {
+        font-size: 12px;
+    }
+}
