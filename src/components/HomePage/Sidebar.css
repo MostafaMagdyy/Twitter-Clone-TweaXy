@@ -1,0 +1,67 @@
+.sidebar {
+    border-right: 1px solid;
+    border-color: var(--twitter-background);
+    padding-left: 20px;
+    padding-right: 20px;
+    /* margin-top: 20px; */
+    /* min-width: 250px; */
+    display: flex;
+    flex-direction: column;
+    /* flex: 0.195; */
+    height: 100vh;
+    width: 250px;
+}
+
+
+.sidebar--tweet {
+    outline: none !important;
+    background-color: var(--button-background) !important;
+    color: white !important;
+    font-weight: 550 !important;
+    font-size: 17px !important;
+    height: 50px !important;
+    border-radius: 30px !important;
+    border: none !important;
+    text-transform: inherit !important;
+    width: 225px;
+    margin-top: 5px !important;
+}
+
+.sidebar--tweet:hover {
+    background-color: #1a89ce !important;
+}
+
+.twitter--icon {
+    color: var(--twitter-color);
+    margin-left: 5px;
+    cursor: pointer;
+    padding: 10px;
+    padding-top: 0%;
+    margin-top: 10px;
+
+}
+
+.twitter--icon:hover {
+    background-color: #eae9e9;
+    border-radius: 30px;
+    transition: background-color 200ms ease-out;
+
+}
+
+.sidebar>.account-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 88%;
+    position: absolute;
+    width: 240px;
+    height: 64px;
+    color: var(--twitter-color);
+    cursor: pointer;
+}
+
+.sidebar>.account-btn:hover {
+    border-radius: 30px;
+    background-color: #eae9e9;
+    transition: background-color 200ms ease-out;
+}
