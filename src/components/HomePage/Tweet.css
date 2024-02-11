@@ -1,0 +1,208 @@
+.tweet {
+    padding: 0 16px;
+    border-bottom: 1px solid var(--twitter-background);
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI Emoji', 'Arial' !important; /* Use a fallback font */
+}
+body {
+    --twitter-color: #35a4f4;
+    --twitter-background: #e6ecf0;
+    --twitter-cianHover: #d8eaf8ed;
+    --twitter-greyColor: #536471;
+    --twitter-greyHover: #eae9e9;
+    --twitter-redColor: rgb(251, 64, 64);
+    --twitter-greenColor: rgb(5, 168, 5);
+    --twitter-greenHover: rgba(0, 128, 0, 0.125);
+    --twitter-redHover: rgba(245, 106, 106, 0.196);
+}
+
+.tweet:hover {
+    background-color: #f3f3f395;
+    transition: background-color 200ms ease-out;
+    cursor: pointer;
+}
+.tweet-container {
+    display: flex;
+    flex: 1;
+}
+.avatar-container {
+    display: flex;
+    align-items: flex-start;
+}
+
+.repost {
+    padding-top: 12px;
+}
+.tweet-main {
+    /* width: 200px; */
+    flex: 1;
+    padding-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+}
+.tweet-user {
+    display: flex;
+}
+.tweet-user > .info-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    color: var(--twitter-greyColor);
+}
+.tweet-user > .info-container > .username {
+    font-weight: bolder;
+    color: black;
+    /* font-family: 'Segoe UI Emoji', 'Arial'; Use a fallback font */
+}
+.tweet-user > .info-container > .dot-container > .dot {
+    padding-bottom: 5px;
+}
+.tweet-user > .options-container {
+    display: flex;
+    width: 34.75px;
+    height: 34.75px;
+    margin: -8px;
+    justify-self: flex-end;
+    align-items: center;
+    justify-items: center;
+}
+.tweet-user > .options-container > .MuiSvgIcon-root {
+    color: var(--twitter-greyColor);
+    font-weight: lighter !important;
+    font-size: 20px;
+    margin: auto;
+}
+
+.tweet-user > .info-container > .dot-container {
+    padding: 0 4px;
+    display: flex;
+}
+
+.tweet-text-container {
+    flex: 1;
+    display: flex;
+}
+.tweet-text-container > .tweet-text {
+    line-height: 20px;
+    word-wrap: break-word;
+    max-width: 100% !important;
+    white-space: normal;
+    color: #0f1419;
+}
+.TweetReply-container{
+    line-height: 20px;
+    word-wrap: break-word;
+    max-width: 100% !important;
+    white-space: normal;
+    color: black;
+    color: #657786;
+    margin-right: 4px;
+}
+.Notification-text-container {
+    flex: 1;
+    display: flex;
+    
+}
+.Notification-text-container > .Notification-text {
+    line-height: 20px;
+    word-wrap: break-word;
+    max-width: 100% !important;
+    white-space: normal;
+    color: #657786;
+    margin-right: 4px;
+}
+
+.Notification-text-container > .username-text {
+    line-height: 20px;
+    word-wrap: break-word;
+    max-width: 100% !important;
+    white-space: normal;
+    color: #35a4f4;
+    margin-right: 4px;
+}
+.username-text:hover {
+    text-decoration: underline;
+}
+.tweet-main > .tweet-activity {
+    display: flex;
+    align-items: end;
+    height: 32px;
+    color: var(--twitter-greyColor);
+    /* overflow: hidden; */
+}
+
+.tweet-activity > .tweet-icon {
+    flex: 0.25;
+    display: flex;
+    align-items: end;
+    /* overflow: hidden; */
+}
+.tweet-icon > .icon-interaction {
+    padding: 0 8px;
+    font-size: 14.5px;
+    font-weight: lighter;
+}
+.tweet-icon > .activity-icon {
+    display: flex;
+    width: 34.75px;
+    height: 34.75px;
+    margin: -8px;
+    justify-content: center;
+}
+
+.tweet-icon > .activity-icon > .MuiSvgIcon-root {
+    font-size: 17.5px;
+    color: var(--twitter-greyColor);
+    align-self: center;
+    justify-self: center;
+}
+
+.tweet-activity > .side-icon {
+    display: flex;
+    width: 34.75px;
+    height: 34.75px;
+    margin: -8px;
+    justify-content: center;
+    align-items: center;
+}
+.tweet-activity > .bookmark {
+    margin-right: 8px;
+}
+.tweet-activity > .side-icon > .MuiSvgIcon-root {
+    /* align-self: flex-end; */
+    font-size: 21px;
+    color: var(--twitter-greyColor);
+    /* align-self: center; */
+}
+
+.tweet-activity > .side-icon:hover {
+    background-color: var(--twitter-cianHover);
+    border-radius: 50%;
+    transition: background-color 200ms ease-out;
+}
+
+.tweet-activity > .side-icon:hover > .MuiSvgIcon-root {
+    color: var(--twitter-color);
+}
+
+.tweet-user > .options-container:hover {
+    background-color: var(--twitter-cianHover);
+    border-radius: 50%;
+    transition: background-color 200ms ease-out;
+}
+
+.tweet-user > .options-container:hover .MuiSvgIcon-root {
+    color: var(--twitter-color);
+}
+
+.tweet-icon > .activity-icon > .like-active {
+    color: var(--twitter-redColor);
+    transition: color 200ms ease-out;
+}
+
+ .repost-active {
+    color: var(--twitter-greenColor) !important;
+    /* transition: color 200ms ease-out; */
+}

@@ -1,0 +1,19 @@
+.notify-box-msg {
+    width: auto;
+    height: auto;
+    border-radius: 8px;
+    left: 45%;
+    top: 90%;
+    position: fixed;
+    z-index: 100;
+    padding: 12px;
+    margin: 0 0 32;
+    background-color: var(--button-background);
+}
+
+.notify-box-msg>.msg-container {
+    padding: 0 11px;
+    color: white;
+    font-size: 15px;
+    text-align: center;
+}

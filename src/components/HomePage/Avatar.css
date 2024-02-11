@@ -1,0 +1,11 @@
+.avatar-box {
+    margin-right: 12px;
+    transition: opacity 0.3s ease;
+}
+.avatar-box > .MuiAvatar-root:hover  {
+    opacity: 0.7; /* Reduce opacity when hovered */
+    cursor: pointer;
+}
+.avatar-container > .MuiAvatar-root {
+    align-self: flex-start;
+}
