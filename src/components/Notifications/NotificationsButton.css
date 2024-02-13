@@ -1,0 +1,30 @@
+.notifications-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.notifications-container:hover {
+    background-color: var(--twitter-greyHover);
+    border-radius: 50px;
+    transition: background-color 200ms ease-out;
+}
+
+.active-notifications-container {
+    color: var(--twitter-color);
+}
+
+.notifications-container>.notifications-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 20px;
+    padding-left: 10px;
+}
+
+.notifications-container>h2 {
+    font-size: 20px;
+    font-weight: 550;
+    margin-right: 20px;
+}
