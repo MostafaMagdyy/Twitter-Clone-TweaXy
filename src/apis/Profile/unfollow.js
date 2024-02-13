@@ -1,16 +1,16 @@
-const follow = async (username, token) => {
+const unfollow = async (username, token) => {
     const url = `https://tweaxybackend.mywire.org/api/v1/users/follow/${username}`;
 
     try {
         const response = await fetch(url, {
-            method: 'POST',
+            method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`,
             },
         });
 
-        console.log('follow response', response);
+        console.log('unfollow response', response);
 
         if (!response.ok) {
             throw await response.json();
@@ -22,4 +22,4 @@ const follow = async (username, token) => {
     }
 };
 
-export default follow;
+export default unfollow;

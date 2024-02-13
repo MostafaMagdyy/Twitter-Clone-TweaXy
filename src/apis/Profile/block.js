@@ -1,5 +1,5 @@
-const follow = async (username, token) => {
-    const url = `https://tweaxybackend.mywire.org/api/v1/users/follow/${username}`;
+const block = async (username, token) => {
+    const url = `https://tweaxybackend.mywire.org/api/v1/users/block/${username}`;
 
     try {
         const response = await fetch(url, {
@@ -10,16 +10,15 @@ const follow = async (username, token) => {
             },
         });
 
-        console.log('follow response', response);
-
         if (!response.ok) {
-            throw await response.json();
+            const responseBody = await response.json();
+            throw new Error(responseBody.message);
         }
 
         return true;
     } catch (error) {
-        console.error(error.message);
+        throw new Error(error.message);
     }
 };
 
-export default follow;
+export default block;
