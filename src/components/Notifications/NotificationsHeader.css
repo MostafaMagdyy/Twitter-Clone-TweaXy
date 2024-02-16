@@ -1,0 +1,54 @@
+.notifications-header-container {
+    top: 0%;
+    z-index: 3;
+    min-width: 600px;
+    display: block;
+    position: sticky;
+    background-color: rgba(255, 255, 255, 0.9725);
+    border-bottom: 1px solid var(--twitter-background);
+}
+
+.notifications-header {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.notifications-header>span {
+    display: flex;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: 600;
+    color: #0F1419;
+    margin-left: 12px;
+}
+
+.notifications-header-navigator {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.notifications-header-navigator>.nav-element {
+    margin: 0;
+    flex: 0.5;
+    padding: 15px 0;
+    font-size: 15px;
+    text-align: center;
+    color: var(--twitter-greyColor);
+}
+
+.notifications-header-navigator>.nav-element:hover {
+    cursor: pointer;
+    background-color: var(--twitter-greyHover);
+    transition: background-color 200ms ease-out;
+}
+
+.active-nav-element {
+    color: #000;
+    font-weight: 600;
+    padding-bottom: 12px;
+    border-bottom: 4px solid var(--twitter-color);
+}

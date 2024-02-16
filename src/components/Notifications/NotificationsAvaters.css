@@ -1,0 +1,17 @@
+.Notification-avatar-box1 {
+    margin-right: 15px;
+}
+.Notification-avatar-box2 {
+    margin-right: 15px;
+}
+/* Notificationcell.css */
+.Notification-avatar-box2 {
+    transition: opacity 0.3s ease;
+}
+.Notification-avatar-box2:hover .MuiAvatar-root {
+    opacity: 0.7; /* Reduce opacity when hovered */
+}
+
+.avatar-container > .MuiAvatar-root {
+    align-self: flex-start;
+}
