@@ -1,0 +1,24 @@
+div.login-or-span {
+    width: 300px;
+    height: 20px;
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+div.login-or-span hr {
+    height: 1px;
+    width: 300px;
+    border: none;
+    border-bottom: 1px solid #c2c2c2;
+}
+
+div.login-or-span span {
+    display: block;
+    background: #fff;
+    font-size: 15px;
+    color-scheme: light;
+    margin-right: 15px;
+    margin-left: 15px;
+}
