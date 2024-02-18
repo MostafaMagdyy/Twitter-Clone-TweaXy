@@ -1,11 +1,11 @@
 import { useRef, useState } from 'react';
+import PropTypes from 'prop-types';
 import React from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import '../../components/LoginWindowHeader/LoginWindowHeader.css';
 import SignUpPage1 from './SignUpPage1';
 import SignUpPage3 from './SignUpPage3';
 import SignUpPage4 from './SignUpPage4';
-import CaptchaPage from './CaptchaPage';
 import SignUpPage5 from './SignUpPage5';
 import { sendEmailVerification } from '../../apis/EmailVerfication';
 import signup from '../../apis/Signup';
@@ -36,6 +36,17 @@ const months = [
     'November',
     'December',
 ];
+/**
+ * Component for user signup.
+ * @component
+ * @param {object} props - The props object.
+ * @param {function} props.onClose - The function to close the signup window.
+ * @returns {JSX.Element} - The rendered component.
+ * @example
+ * ```jsx
+ * <SignUpPage onClose={handleClose} />
+ * ```
+ */
 const SignUpPage = ({ onClose }) => {
     const [windowOpened, setwindowOpned] = useState(0);
     const [Data1, changeData1] = useState({
@@ -167,6 +178,17 @@ const SignUpPage = ({ onClose }) => {
             )}
         </div>
     );
+};
+/**
+ * PropTypes for the SignUpPage component.
+ * @type {Object}
+ */
+SignUpPage.propTypes = {
+    /**
+     * The function to close the signup window.
+     * @type {Function}
+     */
+    onClose: PropTypes.func.isRequired,
 };
 
 export { SignUpPage as default, Errors, months };

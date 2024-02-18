@@ -1,13 +1,23 @@
-import { useState } from 'react';
+import { useState, React } from 'react';
 import './SignUpHome.css';
 import Pictureupload from '../../apis/Pictureupload';
 import './Avater.css';
 import img from '../../../assets/default.jpeg';
-import { useDispatch } from 'react-redux';
 const UN = 'Pick a profile picture';
 const uniq = 'Have a favorite selfie? Upload it now.';
-import { setUser } from '../../redux/actions';
 import NotifyBox from '../../components/NotifyBox/NotifyBox';
+import { setUser } from '../../redux/actions';
+import { useDispatch } from 'react-redux';
+import getUserDataApi from '../../apis/getProfileData';
+import PropTypes from 'prop-types';
+/**
+ * Component for selecting and uploading a profile picture during sign up.
+ * @param {Object} props - The props object.
+ * @param {Function} props.next_Handler - Function to handle moving to the next step.
+ * @param {string} props.token - The user's authentication token.
+ * @param {Object} props.user - The user object.
+ * @returns {JSX.Element} - The rendered component.
+ */
 const SignUpPageAvater = ({ next_Handler, token, user }) => {
     const [avatar, setavatar] = useState(img);
     const [SentImage, setSentImage] = useState(null);
@@ -35,11 +45,25 @@ const SignUpPageAvater = ({ next_Handler, token, user }) => {
     const handleRemoveAvatar = () => {
         setavatar(null);
     };
+    const fetchData = async () => {
+        try {
+            const fetchedData = await getUserDataApi({
+                id: user.id,
+                token: token,
+            });
+            return fetchedData.data.user;
+        } catch (error) {
+            console.log('Failed With Error', error.message);
+            return false;
+        }
+    };
     const updatepicture = async () => {
         const res = await Pictureupload(SentImage, token);
         if (res == true) {
             console.log('Avatar Updated Successfully');
             actionOccurredHandler('Avatar added Successfully');
+            const res2 = await fetchData();
+            if (res2 !== false) dispatch(setUser(res2));
             setTimeout(() => {
                 next_Handler();
             }, 500);
@@ -92,5 +116,11 @@ const SignUpPageAvater = ({ next_Handler, token, user }) => {
             </div>
         </>
     );
+};
+// PropTypes documentation
+SignUpPageAvater.propTypes = {
+    next_Handler: PropTypes.func.isRequired,
+    token: PropTypes.string.isRequired,
+    user: PropTypes.object.isRequired,
 };
 export default SignUpPageAvater;

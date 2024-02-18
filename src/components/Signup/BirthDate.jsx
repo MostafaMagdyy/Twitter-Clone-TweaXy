@@ -1,6 +1,7 @@
 import React from 'react';
 import { MenuItem, TextField } from '@mui/material';
 import SignUpSelectors from '../../shared/selectors/SignUp';
+import PropTypes from 'prop-types';
 const months = [
     { name: 'January', value: '1' },
     { name: 'February', value: '2' },
@@ -15,6 +16,17 @@ const months = [
     { name: 'November', value: '11' },
     { name: 'December', value: '12' },
 ];
+/**
+ * Component for selecting birth date (month, day, year).
+ *
+ * @param {Object} props - Component props.
+ * @param {Object} props.Data2 - Object containing month, day, and year values.
+ * @param {string} props.Data2.month - Month value.
+ * @param {string} props.Data2.day - Day value.
+ * @param {string} props.Data2.year - Year value.
+ * @param {Function} props.Data2_Handler - Function to handle changes in Data2.
+ * @returns {JSX.Element} BirthDate component.
+ */
 const BirthDate = ({ Data2, Data2_Handler }) => {
     const years = Array.from({ length: 121 }, (_, i) => 2023 - i);
     const Render_Days = () => {
@@ -119,5 +131,19 @@ const BirthDate = ({ Data2, Data2_Handler }) => {
         </div>
     );
 };
-
+// PropTypes
+BirthDate.propTypes = {
+    /**
+     * Object containing month, day, and year values.
+     */
+    Data2: PropTypes.shape({
+        month: PropTypes.string.isRequired,
+        day: PropTypes.string.isRequired,
+        year: PropTypes.string.isRequired,
+    }).isRequired,
+    /**
+     * Function to handle changes in Data2.
+     */
+    Data2_Handler: PropTypes.func.isRequired,
+};
 export { BirthDate as default, months };

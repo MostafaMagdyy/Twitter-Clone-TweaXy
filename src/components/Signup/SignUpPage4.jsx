@@ -9,7 +9,16 @@ import {
 } from '../../apis/EmailVerfication';
 import { Errors } from './SignUpPage';
 import SignUpSelectors from '../../shared/selectors/SignUp';
-
+import PropTypes from 'prop-types';
+/**
+ * Component for the fourth step of the signup process.
+ * @param {Object} props - The props object.
+ * @param {string} props.verficationcode - The verification code.
+ * @param {Function} props.setverficationcode - Function to set the verification code.
+ * @param {Object} props.Data1 - State object for data related to previous steps (username and email).
+ * @param {Function} props.nextWindowHandler - Function to handle moving to the next step.
+ * @returns {JSX.Element} - The rendered component.
+ */
 const SignUpPage4 = ({
     verficationcode,
     setverficationcode,
@@ -58,7 +67,7 @@ const SignUpPage4 = ({
                 />
             </div>
             {!isokverficationcode && (
-                <p className="error-message" > {Errors['Verficationcode']}</p>
+                <p className="error-message"> {Errors['Verficationcode']}</p>
             )}
             <a
                 onClick={resendHandler}
@@ -80,6 +89,12 @@ const SignUpPage4 = ({
         </div>
     );
 };
+// PropTypes documentation
+SignUpPage4.propTypes = {
+    verficationcode: PropTypes.string.isRequired,
+    setverficationcode: PropTypes.func.isRequired,
+    Data1: PropTypes.object.isRequired,
+    nextWindowHandler: PropTypes.func.isRequired,
+};
 
 export default SignUpPage4;
-

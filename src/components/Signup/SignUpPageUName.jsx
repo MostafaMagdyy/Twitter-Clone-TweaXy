@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, React } from 'react';
 import './SignUpHome.css';
 import { isUniqueUsername } from '../../apis/Email';
 import { TextField } from '@mui/material';
@@ -7,6 +7,16 @@ const uniq = 'Your @username is unique. You can always change it later.';
 import UsernameUpdate from '../../apis/Usernameupdate';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../redux/actions';
+import PropTypes from 'prop-types';
+/**
+ * Component for setting up the user's username during sign up.
+ * @param {Object} props - The props object.
+ * @param {Function} props.next_Handler - Function to handle moving to the next step.
+ * @param {string} props.UN - The default username.
+ * @param {string} props.token - The user's authentication token.
+ * @param {Object} props.user - The user object.
+ * @returns {JSX.Element} - The rendered component.
+ */
 const SignUpPageuserName = ({ next_Handler, UN, token, user }) => {
     const [username, setusername] = useState('');
     const dispatch = useDispatch();
@@ -76,5 +86,11 @@ const SignUpPageuserName = ({ next_Handler, UN, token, user }) => {
             </div>
         </>
     );
+};
+SignUpPageuserName.propTypes = {
+    next_Handler: PropTypes.func.isRequired,
+    UN: PropTypes.string.isRequired,
+    token: PropTypes.string.isRequired,
+    user: PropTypes.object.isRequired,
 };
 export default SignUpPageuserName;

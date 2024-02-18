@@ -9,6 +9,17 @@ import SignUpSelectors from '../../shared/selectors/SignUp';
 import BirthDate from './BirthDate';
 const date = 'Date of birth';
 const create = 'Create your account';
+import PropTypes from 'prop-types';
+/**
+ * Component for the first step of the signup process.
+ * @param {Object} props - The props object.
+ * @param {Function} props.nextWindowHandler - Function to handle moving to the next step.
+ * @param {Object} props.Data1 - State object for data related to step 1 (username and email).
+ * @param {Function} props.changeData1 - Function to update state for step 1 data.
+ * @param {Object} props.Data2 - State object for data related to step 2 (birth date).
+ * @param {Function} props.changeData2 - Function to update state for step 2 data.
+ * @returns {JSX.Element} - The rendered component.
+ */
 const SignUpPage1 = ({
     nextWindowHandler,
     Data1,
@@ -104,4 +115,20 @@ const SignUpPage1 = ({
         </div>
     );
 };
+// PropTypes documentation
+SignUpPage1.propTypes = {
+    nextWindowHandler: PropTypes.func.isRequired,
+    Data1: PropTypes.shape({
+        username: PropTypes.string.isRequired,
+        usermail: PropTypes.string.isRequired,
+    }).isRequired,
+    changeData1: PropTypes.func.isRequired,
+    Data2: PropTypes.shape({
+        day: PropTypes.number.isRequired,
+        month: PropTypes.string.isRequired,
+        year: PropTypes.number.isRequired,
+    }).isRequired,
+    changeData2: PropTypes.func.isRequired,
+};
+
 export default SignUpPage1;

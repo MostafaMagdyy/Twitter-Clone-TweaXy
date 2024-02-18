@@ -12,6 +12,16 @@ import { useState, useEffect } from 'react';
 import { isAcceptebalePass } from '../../apis/Email';
 import { Errors } from './SignUpPage';
 import SignUpSelectors from '../../shared/selectors/SignUp';
+import PropTypes from 'prop-types';
+/**
+ * Component for the fifth step of the signup process.
+ * @param {Object} props - The props object.
+ * @param {boolean} props.canbeuser - Flag indicating if the username is acceptable.
+ * @param {string} props.password - The user's password.
+ * @param {Function} props.passwordhandler - Function to handle password changes.
+ * @param {Function} props.nextWindowHandler - Function to handle moving to the next step.
+ * @returns {JSX.Element} - The rendered component.
+ */
 const SignUpPage5 = ({
     canbeuser,
     password,
@@ -95,4 +105,12 @@ const SignUpPage5 = ({
         </div>
     );
 };
+// PropTypes documentation
+SignUpPage5.propTypes = {
+    canbeuser: PropTypes.bool.isRequired,
+    password: PropTypes.string.isRequired,
+    passwordhandler: PropTypes.func.isRequired,
+    nextWindowHandler: PropTypes.func.isRequired,
+};
+
 export default SignUpPage5;
