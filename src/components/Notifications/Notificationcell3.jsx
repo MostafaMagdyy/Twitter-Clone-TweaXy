@@ -10,6 +10,19 @@ import MediaChecker from '../../components/homePage_components//MediaChecker';
 import { apiLikeTweet } from '../../apis/tweetApis/LikeTweet';
 import TweetDate from '../../utils/TweetDate';
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
+/**
+ * Notificationcell3 component for displaying notifications related to replies.
+ * @param {Object} props - The props for the Notificationcell3 component.
+ * @param {Object} props.fromUser - The user who replied to the tweet.
+ * @param {Object} props.interaction - The interaction details of the tweet.
+ * @param {string} props.uploadTime - The timestamp when the reply was uploaded.
+ * @param {Object} props.reply - The reply details.
+ * @param {string} props.token - The authentication token of the current user.
+ * @param {string} props.curusername - The username of the current user.
+ * @param {string} props.userID - The user ID of the current user.
+ * @returns JSX element representing the Notificationcell3 component.
+ */
 export default function Notificationcell3({
     fromUser,
     interaction,
@@ -293,3 +306,12 @@ export default function Notificationcell3({
         </div>
     );
 }
+Notificationcell3.propTypes = {
+    fromUser: PropTypes.object.isRequired,
+    interaction: PropTypes.object.isRequired,
+    uploadTime: PropTypes.string.isRequired,
+    reply: PropTypes.object.isRequired,
+    token: PropTypes.string.isRequired,
+    curusername: PropTypes.string.isRequired,
+    userID: PropTypes.string.isRequired,
+};

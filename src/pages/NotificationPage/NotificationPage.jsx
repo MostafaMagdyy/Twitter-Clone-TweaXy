@@ -11,26 +11,12 @@ import NotificationHeader from '../../components/Notifications/NotificationsHead
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import getUserDataApi from '../../apis/getProfileData';
-
 const NotificationPage = () => {
     const user = useSelector((state) => state.user.user);
     const token = useSelector((state) => state.user.token);
-    const [avatar, setavatar] = useState(null);
     const [Notifications, setNotifications] = useState([]);
     const [isPageLoading, setIsPageLoading] = useState(true);
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const fetchedData = await getUserDataApi({
-                    id: user.id,
-                    token: token,
-                });
-                setavatar(fetchedData.data.user.avatar);
-            } catch (error) {
-                console.log('Failed With Error', error.message);
-            }
-        };
         const fetchNotifications = async () => {
             try {
                 const fetchedNotifications = await getAllNotifications(
@@ -46,7 +32,6 @@ const NotificationPage = () => {
             }
         };
         if (user && token) {
-            fetchData();
             fetchNotifications();
         }
     }, [user, token]);
@@ -58,11 +43,7 @@ const NotificationPage = () => {
     return (
         <>
             <div className="home-page">
-                <Sidebar
-                    userData={{ user, token }}
-                    active={3}
-                    avatar={avatar}
-                />
+                <Sidebar userData={{ user, token }} active={3} />
                 <div className="feed">
                     <NotificationHeader activePage={0} />
                     {Notifications.length > 0 &&
