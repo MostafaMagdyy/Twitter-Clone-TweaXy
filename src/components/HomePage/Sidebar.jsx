@@ -11,15 +11,20 @@ import AccountButton from '../AccountButton/AccountButton';
 import NotificationsButton from '../NotificationsButton/NotificationsButton';
 import HomePageSelectors from '../../shared/selectors/HomePage';
 import ConversationsButton from '../ConversationsButton/ConversationsButton';
+import PropTypes from 'prop-types';
 
-export default function Sidebar({
-    userData,
-    active,
-    setIsTherePopUpWindow,
-    avatar,
-}) {
+/**
+ * Component representing the sidebar navigation menu.
+ *
+ * @param {object} props - Component props.
+ * @param {object} props.userData - Object containing user data.
+ * @param {number} props.active - Index of the active sidebar option.
+ * @param {function} props.setIsTherePopUpWindow - Function to set whether there is a popup window.
+ * @returns {JSX.Element} - Sidebar component.
+ */
+
+export default function Sidebar({ userData, active, setIsTherePopUpWindow }) {
     const navigate = useNavigate();
-    console.log('from sidebar', avatar);
     const toProfile = () => {
         navigate(`/profile/${userData.user.username}`, {
             state: { userID: userData.user.id },
@@ -82,7 +87,7 @@ export default function Sidebar({
 
             <div className="account-btn">
                 <AccountButton
-                    userAvatar={avatar}
+                    userAvatar={userData.user.avatar}
                     name={userData.user.name}
                     username={userData.user.username}
                     token={userData.token}
@@ -92,3 +97,8 @@ export default function Sidebar({
         </div>
     );
 }
+Sidebar.propTypes = {
+    userData: PropTypes.object.isRequired,
+    active: PropTypes.number.isRequired,
+    setIsTherePopUpWindow: PropTypes.func.isRequired,
+};

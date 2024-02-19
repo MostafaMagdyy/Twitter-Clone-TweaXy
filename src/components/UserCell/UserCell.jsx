@@ -5,7 +5,23 @@ import unfollow from '../../apis/unfollow';
 import follow from '../../apis/follow';
 import { useNavigate } from 'react-router-dom';
 import UsersCellsSelectors from '../../shared/selectors/UsersCells';
+import React from 'react';
+import PropTypes from 'prop-types';
 
+/**
+ *
+ * @param {object} props - Component props.
+ * @param {string} props.id - User ID.
+ * @param {string} props.name - User's name.
+ * @param {string} props.username - User's username.
+ * @param {string} props.avatar - URL of the user's avatar.
+ * @param {string} props.bio - User's bio.
+ * @param {boolean} props.followsMe - Whether the user follows the current user.
+ * @param {boolean} props.followedByMe - Whether the current user follows the user.
+ * @param {string} props.token - Authorization token for API requests.
+ * @param {string} props.myID - ID of the current user.
+ * @returns {JSX.Element} - UserCell component.
+ */
 const UserCell = ({
     id,
     name,
@@ -107,6 +123,17 @@ const UserCell = ({
             </div>
         </div>
     );
+};
+UserCell.propTypes = {
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired,
+    avatar: PropTypes.string.isRequired,
+    bio: PropTypes.string.isRequired,
+    followsMe: PropTypes.bool.isRequired,
+    followedByMe: PropTypes.bool.isRequired,
+    token: PropTypes.string.isRequired,
+    myID: PropTypes.string.isRequired,
 };
 
 export default UserCell;

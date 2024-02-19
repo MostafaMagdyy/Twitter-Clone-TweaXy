@@ -1,5 +1,17 @@
 import './FollowingFollowersHeader.css';
+import React from 'react';
+import PropTypes from 'prop-types';
 
+/**
+ *
+ * @param {object} props - Component props.
+ * @param {string} props.name - Name of the user.
+ * @param {string} props.username - Username of the user.
+ * @param {number} props.curPage - Current active page index.
+ * @param {function} props.setCurPage - Function to set the current page.
+ * @param {function} props.navigateBack - Function to navigate back.
+ * @returns {JSX.Element} - FollowingFollowersHeader component.
+ */
 const FollowingFollowersHeader = ({
     name,
     username,
@@ -45,6 +57,14 @@ const FollowingFollowersHeader = ({
             </div>
         </div>
     );
+};
+
+FollowingFollowersHeader.propTypes = {
+    name: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired,
+    curPage: PropTypes.number.isRequired,
+    setCurPage: PropTypes.func.isRequired,
+    navigateBack: PropTypes.func.isRequired,
 };
 
 export default FollowingFollowersHeader;
