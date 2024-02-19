@@ -76,16 +76,14 @@ https://github.com/MostafaMagdyy/Twitter-Clone-TweaXy/assets/97239596/a0592687-b
 ```sh
 $ git clone https://github.com/MostafaMagdyy/Twitter-Clone-TweaXy.git
 ```
-
-2. **_Install dependencies_**
-
-```sh
-$ npm install
-```
-3. **_Navigate to repository directory_**
+2. **_Navigate to repository directory_**
 
 ```sh
 $ cd Twitter-Clone-TweaXy
+```
+3. **_Install dependencies_**
+```sh
+$ npm install
 ```
 4. **_Run_**
 
