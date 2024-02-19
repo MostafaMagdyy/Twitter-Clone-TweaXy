@@ -11,6 +11,16 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import socket from '../../socket';
+import PropTypes from 'prop-types';
+/**
+ * LoginPage component handles the login process, including entering UUID (username or email)
+ * and password. It also provides options for signing in with Google, handling forgot password,
+ * and navigating to the sign-up page.
+ * @param {Object} props - Component props.
+ * @param {Function} props.onClose - Function to close the login window.
+ * @param {Function} props.openSignUpWindow - Function to open the sign-up window.
+ * @returns {JSX.Element} LoginPage component JSX.
+ */
 
 const LoginPage = ({ onClose, openSignUpWindow }) => {
     const dispatch = useDispatch();
@@ -143,6 +153,11 @@ const LoginPage = ({ onClose, openSignUpWindow }) => {
             )}
         </div>
     );
+};
+// PropTypes
+LoginPage.propTypes = {
+    onClose: PropTypes.func.isRequired,
+    openSignUpWindow: PropTypes.func.isRequired,
 };
 
 export default LoginPage;
