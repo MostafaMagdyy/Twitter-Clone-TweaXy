@@ -1,37 +1,39 @@
-// ProfileBio.js
 import './ProfileBio.css';
 import { BiCalendar } from 'react-icons/bi';
-import { Avatar, IconButton } from '@mui/material';
+import { Avatar } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import EditProfile from './EditProfileButton';
 import parseDate from '../../utils/parseDate';
 import { useState } from 'react';
-import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
-import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
-import LinkIcon from '@mui/icons-material/Link';
 import unfollow from '../../apis/unfollow';
 import follow from '../../apis/follow';
 import ProfilePageSelectors from '../../shared/selectors/ProfilePage';
-import { MoreHoriz } from '@mui/icons-material';
-import ProfileMoreOptionsPopDown from '../ProfileMoreOptionsPopDown/ProfileMoreOptionsPopDown';
-import BlockUserWindow from '../BlockUserWindow/BlockUserWindow';
 import block from '../../apis/block';
 import unblock from '../../apis/unblock';
-import createConversation from '../../apis/createConversation';
+import React from 'react';
+import PropTypes from 'prop-types'; // Import PropTypes
 
+/**
+ * ProfileBio component for displaying user profile information.
+ * @param {Object} props - The props for the ProfileBio component.
+ * @param {Object} props.curuser - Current user data.
+ * @param {boolean} props.viewTweets - Flag indicating whether to view user tweets.
+ * @param {Function} props.actionOccurredHandler - Handler for actions occurring in the component.
+ * @param {string} props.token - User authentication token.
+ * @param {string} props.currUserId - ID of the current user.
+ */
 const ProfileBio = (props) => {
     const [isFollowingButtonHovered, setIsFollowingButtonHovered] =
         useState(false);
-
     const [followedByMeState, setFollowedByMeState] = useState(
         props.curuser.followedByMe
     );
-
+    const [isBlocked, setIsBlocked] = useState(props.curuser.blockedByMe);
     const handleFollowingButtonHover = () => {
         setIsFollowingButtonHovered(!isFollowingButtonHovered);
     };
-
-    const onButtonClick = async (event) => {
+    const navigate = useNavigate();
+    const FollowClick = async (event) => {
         event.stopPropagation();
         if (followedByMeState) {
             if (await unfollow(props.curuser.username, props.token)) {
@@ -49,9 +51,6 @@ const ProfileBio = (props) => {
             }
         }
     };
-
-    const navigate = useNavigate();
-
     const navigateToFollowingPage = () => {
         navigate(`/${props.curuser.username}/following`, {
             state: {
@@ -72,140 +71,80 @@ const ProfileBio = (props) => {
         });
     };
 
-    const [anchorEl, setAnchorEl] = useState(null);
-
-    const handleMoreButtonClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-
-    const closeMoreOptionsMenu = () => {
-        setAnchorEl(null);
-    };
-
-    const [blockButtonText, setBlockButtonText] = useState('Block');
-    const [isBlockUserWindowOpened, setIsBlockUserWindowOpened] =
-        useState(false);
-
-    const handleBlockUserWindowClose = () => {
-        setIsBlockUserWindowOpened(false);
-    };
-
-    const handleBlockButtonClick = () => {
-        setIsBlockUserWindowOpened(true);
-    };
-
-    const handleOnBlockButtonMouseEnter = () => {
-        setBlockButtonText('Unblock');
-    };
-
-    const handleOnBlockButtonMouseLeave = () => {
-        setBlockButtonText('Block');
-    };
-
-    const handleBlockUser = async () => {
-        if (await unblock(props.curuser.username, props.token)) {
-            window.location.reload();
+    const handleUserBlock = async () => {
+        if (isBlocked) {
+            if (await unblock(props.curuser.username, props.token)) {
+                window.location.reload();
+                setIsBlocked(true);
+            }
+        } else {
+            if (await block(props.curuser.username, props.token)) {
+                window.location.reload();
+                const timeoutID = setTimeout(() => {
+                    setIsBlocked(true);
+                }, 400);
+                return () => clearTimeout(timeoutID);
+            }
         }
     };
-
-    const handleChatWithUser = async () => {
-        try {
-            const conversationInfo = await createConversation(
-                props.curuser.username,
-                props.token
-            );
-
-            navigate('/conversations', {
-                state: { conversationInfo: conversationInfo },
-            });
-        } catch (error) {
-            console.error(error.message);
-        }
-    };
-
     return (
         <div className="biocontainer">
             <div className="backgroundImage">
-                <img
-                    style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                    }}
-                    src={`http://tweaxybackend.mywire.org/api/v1/images/${props.curuser.cover}`}
-                />
+                {props.curuser.cover && (
+                    <img
+                        style={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover',
+                        }}
+                        src={`https://tweaxybackend.mywire.org/api/v1/images/${props.curuser.cover}`}
+                    />
+                )}
             </div>
-
             <div className="profileTitle">
                 <div className="profileImage">
                     <Avatar
                         sx={{ width: 134, height: 134 }}
-                        src={`http://tweaxybackend.mywire.org/api/v1/images/${props.curuser.avatar}`}
+                        src={`https://tweaxybackend.mywire.org/api/v1/images/${props.curuser.avatar}`}
                     />
                 </div>
                 {props.curuser.id === props.currUserId ? (
                     <EditProfile curuser={props.curuser} token={props.token} />
                 ) : (
                     <div className="profile-buttons-container">
-                        <div className="icon-btn-wrapper">
-                            <IconButton
-                                onClick={handleChatWithUser}
-                                style={{
-                                    border: '1px solid var(--twitter-background)',
-                                }}
-                            >
-                                <EmailOutlinedIcon style={{ color: 'black' }} />
-                            </IconButton>
-                        </div>
-                        <div className="icon-btn-wrapper">
-                            <IconButton
-                                onClick={handleMoreButtonClick}
-                                aria-label="more"
-                                style={{
-                                    border: '1px solid var(--twitter-background)',
-                                }}
-                            >
-                                <MoreHoriz style={{ color: 'black' }} />
-                            </IconButton>
-                        </div>
-                        <ProfileMoreOptionsPopDown
-                            handleClose={closeMoreOptionsMenu}
-                            anchorEl={anchorEl}
-                            username={props.curuser.username}
-                            userID={props.curuser.id}
-                            token={props.token}
-                            MutedByMe={props.curuser.MutedByMe}
-                            blockedByMe={props.curuser.blockedByMe}
-                        />
                         {props.curuser.blocksMe ? (
                             <></>
-                        ) : props.curuser.blockedByMe ? (
+                        ) : isBlocked ? (
                             <button
                                 className="red-btn"
-                                onClick={handleBlockButtonClick}
-                                onMouseEnter={handleOnBlockButtonMouseEnter}
-                                onMouseLeave={handleOnBlockButtonMouseLeave}
+                                onClick={handleUserBlock}
                             >
-                                {blockButtonText}
+                                Unblock
                             </button>
                         ) : (
-                            <div
-                                className="editProfile"
-                                onClick={onButtonClick}
-                                onMouseEnter={handleFollowingButtonHover}
-                                onMouseLeave={handleFollowingButtonHover}
-                                data-test={
-                                    ProfilePageSelectors.FOLLOW_UNFOLLOW_BUTTON
-                                }
-                            >
-                                <span>
+                            <>
+                                <button
+                                    className="red-btn"
+                                    onClick={handleUserBlock}
+                                >
+                                    Block
+                                </button>
+                                <button
+                                    className="white-btn"
+                                    onClick={FollowClick}
+                                    onMouseEnter={handleFollowingButtonHover}
+                                    onMouseLeave={handleFollowingButtonHover}
+                                    data-test={
+                                        ProfilePageSelectors.FOLLOW_UNFOLLOW_BUTTON
+                                    }
+                                >
                                     {followedByMeState === false
                                         ? 'Follow'
                                         : isFollowingButtonHovered
                                         ? 'Unfollow'
                                         : 'Following'}
-                                </span>
-                            </div>
+                                </button>
+                            </>
                         )}
                     </div>
                 )}
@@ -276,15 +215,16 @@ const ProfileBio = (props) => {
                     </span>
                 </div>
             )}
-            <BlockUserWindow
-                openWindow={isBlockUserWindowOpened}
-                closeWindow={handleBlockUserWindowClose}
-                handleUserBlock={handleBlockUser}
-                username={props.curuser.username}
-                isUserBlocked={true}
-            />
         </div>
     );
+};
+// PropTypes
+ProfileBio.propTypes = {
+    curuser: PropTypes.object.isRequired,
+    viewTweets: PropTypes.bool.isRequired,
+    actionOccurredHandler: PropTypes.func.isRequired,
+    token: PropTypes.string.isRequired,
+    currUserId: PropTypes.string.isRequired,
 };
 
 export default ProfileBio;

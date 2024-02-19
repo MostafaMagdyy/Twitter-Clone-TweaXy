@@ -10,6 +10,18 @@ import ProfilePageSelectors from '../../shared/selectors/ProfilePage';
 import BirthDate from '../SignUpPage/BirthDate';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../redux/actions';
+import getUserDataApi from '../../apis/getProfileData';
+import React from 'react';
+import PropTypes from 'prop-types'; // Import PropTypes
+
+/**
+ * EditProfilePage component for displaying the edit profile page.
+ * @param {Object} props - The props for the EditProfilePage component.
+ * @param {Object} props.curuser - Current user data.
+ * @param {Function} props.onClose - Function to close the edit profile page.
+ * @param {string} props.authToken - User authentication token.
+ * @param {Function} props.setMessage - Function to set a message.
+ */
 export default function EditProfilePage({
     curuser,
     onClose,
@@ -36,6 +48,18 @@ export default function EditProfilePage({
         month: month,
         year: year,
     });
+    const fetchData = async () => {
+        try {
+            const fetchedData = await getUserDataApi({
+                id: curuser.id,
+                token: authToken,
+            });
+            console.log('from update', fetchedData.data.user);
+            return fetchedData.data.user;
+        } catch (error) {
+            return false;
+        }
+    };
     const saveHandler = async () => {
         const res = await updateInfo(
             ProfileData.name,
@@ -46,10 +70,10 @@ export default function EditProfilePage({
             ProfileData.location,
             authToken
         );
-        if (res == true) {
+        if (res === true) {
+            const res2 = await fetchData();
+            if (res2 !== false) dispatch(setUser(res2));
             setMessage();
-            console.log('in raduix', ProfileData.name);
-            dispatch(setUser({ ...curuser, name: ProfileData.name }));
         }
         onClose();
     };
@@ -113,7 +137,7 @@ export default function EditProfilePage({
                                     className="image-position"
                                     src={
                                         TempselectedImage === null
-                                            ? `http://tweaxybackend.mywire.org/api/v1/images/${selectedImage}`
+                                            ? `https://tweaxybackend.mywire.org/api/v1/images/${selectedImage}`
                                             : selectedImage
                                     }
                                 />
@@ -134,7 +158,7 @@ export default function EditProfilePage({
                                         sx={{ width: 100, height: 100 }}
                                         src={
                                             TempProfileImage === null
-                                                ? `http://tweaxybackend.mywire.org/api/v1/images/${ProfileImage}`
+                                                ? `https://tweaxybackend.mywire.org/api/v1/images/${ProfileImage}`
                                                 : ProfileImage
                                         }
                                     />
@@ -210,3 +234,10 @@ export default function EditProfilePage({
         </>
     );
 }
+// PropTypes
+EditProfilePage.propTypes = {
+    curuser: PropTypes.object.isRequired,
+    onClose: PropTypes.func.isRequired,
+    authToken: PropTypes.string.isRequired,
+    setMessage: PropTypes.func.isRequired,
+};

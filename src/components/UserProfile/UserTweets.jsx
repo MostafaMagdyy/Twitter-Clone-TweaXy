@@ -1,9 +1,20 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback, React } from 'react';
 import GetuserTweets from '../../apis/tweetApis/UserTweet';
 import { apiDeleteTweet } from '../../apis/tweetApis/deleteTweet';
 import LoadingPage from '../LoadingPage/LoadingPage';
 import Tweet from '../homePage_components/Tweet';
+import PropTypes from 'prop-types'; // Import PropTypes
 
+/**
+ * UserTweets component for displaying tweets of a user.
+ * @param {Object} props - The props for the UserTweets component.
+ * @param {string} props.userID - The ID of the user whose tweets are being displayed.
+ * @param {string} props.curUserID - The ID of the current user.
+ * @param {boolean} props.followedByMe - Indicates whether the current user follows the user whose tweets are being displayed.
+ * @param {Function} props.actionOccurredHandler - Function to handle actions that occur.
+ * @param {Function} props.setnumposts - Function to set the number of posts.
+ * @param {string} props.token - User authentication token.
+ */
 const UserTweets = ({
     userID,
     curUserID,
@@ -109,5 +120,13 @@ const UserTweets = ({
         </>
     );
 };
-
+// PropTypes
+UserTweets.propTypes = {
+    userID: PropTypes.string.isRequired,
+    curUserID: PropTypes.string.isRequired,
+    followedByMe: PropTypes.bool.isRequired,
+    actionOccurredHandler: PropTypes.func.isRequired,
+    setnumposts: PropTypes.func.isRequired,
+    token: PropTypes.string.isRequired,
+};
 export default UserTweets;

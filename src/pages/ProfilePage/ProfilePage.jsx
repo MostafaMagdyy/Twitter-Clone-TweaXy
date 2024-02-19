@@ -13,7 +13,6 @@ const ProfilePage = () => {
     const [avatar, setavatar] = useState(null);
     const location = useLocation();
     const userID = location.state?.userID;
-
     const token = useSelector((state) => state.user.token);
     const user = useSelector((state) => state.user.user);
     const currUserId = useSelector((state) => state.user.user.id);
@@ -36,9 +35,7 @@ const ProfilePage = () => {
         <>
             <div className="home-page">
                 {/**Side bar */}
-                {renderSidebar && (
-                    <Sidebar userData={userData} active={1} avatar={avatar} />
-                )}
+                {renderSidebar && <Sidebar userData={userData} active={1} />}
                 {/**News feed */}
                 <Profile
                     userData={userData}

@@ -6,6 +6,16 @@ import { apiDeleteTweet } from '../../apis/tweetApis/deleteTweet';
 import NotifyBox from '../../components/NotifyBox/NotifyBox';
 import React from 'react';
 import LoadingPage from '../LoadingPage/LoadingPage';
+import PropTypes from 'prop-types';
+/**
+ * Renders a list of tweets liked by a specific user.
+ *
+ * @param {Object} props - The component props.
+ * @param {string} props.userID - The ID of the user whose liked tweets are to be fetched.
+ * @param {string} props.curUserID - The ID of the currently logged-in user.
+ * @param {string} props.token - The authentication token for API requests.
+ * @returns {JSX.Element} - The rendered component.
+ */
 const TweetsUSerLikes = ({ userID, curUserID, token }) => {
     const [tweets, setTweets] = useState([]);
     const [offset, setOffset] = useState(0);
@@ -106,5 +116,10 @@ const TweetsUSerLikes = ({ userID, curUserID, token }) => {
             {actionMessage.length !== 0 && <NotifyBox text={actionMessage} />}
         </>
     );
+};
+TweetsUserLikes.propTypes = {
+    userID: PropTypes.string.isRequired,
+    curUserID: PropTypes.string.isRequired,
+    token: PropTypes.string.isRequired,
 };
 export default TweetsUSerLikes;

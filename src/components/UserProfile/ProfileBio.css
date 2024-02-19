@@ -6,7 +6,6 @@
     width: 100%;
 }
 
-
 .backgroundImage {
     height: 200px;
     width: 100%;
@@ -45,6 +44,9 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+}
+.profile-buttons-container button {
+    margin-right: 12px;
 }
 
 .icon-btn-wrapper {
@@ -103,7 +105,6 @@
 
 .profileBiography-dateMargin {
     padding-top: 15px;
-
 }
 
 .profileBiography-joinDate {
@@ -165,4 +166,16 @@
 
 .red-btn:hover {
     background-color: rgb(234, 23, 36);
+}
+.white-btn {
+    width: 96px;
+    height: 36px;
+    border-radius: 9999px;
+    border: 1px solid rgba(0, 0, 0, 0);
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: background 200ms, box-shadow 200ms;
 }

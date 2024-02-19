@@ -2,7 +2,19 @@ import '../userProfile_components/tabsProfile.css';
 import TweetsUSerLikes from './UserLikedTweets';
 import UserTweets from './UserTweets';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
+/**
+ * TabsProfile component for displaying user profile tabs.
+ * @param {Object} props - The props for the TabsProfile component.
+ * @param {boolean} props.isTherePopUpWindow - Flag indicating if there's a pop-up window.
+ * @param {string} props.userID - ID of the user.
+ * @param {string} props.curUserID - ID of the current user.
+ * @param {boolean} props.followedByMe - Flag indicating if the user is followed by the current user.
+ * @param {Function} props.actionOccurredHandler - Handler for actions occurring in the component.
+ * @param {Function} props.setnumposts - Function to set the number of posts.
+ * @param {string} props.token - User authentication token.
+ */
 const TabsProfile = ({
     isTherePopUpWindow,
     userID,
@@ -64,5 +76,15 @@ const TabsProfile = ({
             )}
         </>
     );
+};
+// PropTypes
+TabsProfile.propTypes = {
+    isTherePopUpWindow: PropTypes.bool.isRequired,
+    userID: PropTypes.string.isRequired,
+    curUserID: PropTypes.string.isRequired,
+    followedByMe: PropTypes.bool.isRequired,
+    actionOccurredHandler: PropTypes.func.isRequired,
+    setnumposts: PropTypes.func.isRequired,
+    token: PropTypes.string.isRequired,
 };
 export default TabsProfile;

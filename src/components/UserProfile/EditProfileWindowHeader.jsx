@@ -1,6 +1,6 @@
 import ProfilePageSelectors from '../../shared/selectors/ProfilePage';
 import './EditProfileWindowHeader.css';
-
+import React from 'react';
 const EditProfileWindowHeader = ({ onClose, saveHandler }) => (
     <div className="EditProfile-window-header">
         <button

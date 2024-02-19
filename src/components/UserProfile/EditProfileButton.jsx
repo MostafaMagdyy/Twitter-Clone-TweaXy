@@ -3,6 +3,14 @@ import { useState } from 'react';
 import EditProfilePage from '../../pages/userProfile/EditProfilePage';
 import ProfilePageSelectors from '../../shared/selectors/ProfilePage';
 import NotifyBox from '../NotifyBox/NotifyBox';
+import PropTypes from 'prop-types'; // Import PropTypes
+
+/**
+ * EditProfile component for displaying the edit profile button.
+ * @param {Object} props - The props for the EditProfile component.
+ * @param {Object} props.curuser - Current user data.
+ * @param {string} props.token - User authentication token.
+ */
 export default function EditProfile(props) {
     const [isWindowOpen, setIsWindowOpen] = useState(false);
     const [Message, setMessage] = useState('');
@@ -41,3 +49,8 @@ export default function EditProfile(props) {
         </>
     );
 }
+// PropTypes
+EditProfile.propTypes = {
+    curuser: PropTypes.object.isRequired,
+    token: PropTypes.string.isRequired,
+};

@@ -9,6 +9,16 @@ import getUserDataApi from '../../apis/getProfileData';
 import ProfileHeader from './ProfileHeader';
 import TabsProfile from './tabsProfile';
 import ProfileBio from './ProfileBio';
+import PropTypes from 'prop-types'; // Import PropTypes
+
+/**
+ * Profile component for displaying user profile information and posts.
+ * @param {object} props - The props for the Profile component.
+ * @param {object} props.userData - User data including token and current user ID.
+ * @param {string} props.userID - ID of the user whose profile is being viewed.
+ * @param {Function} props.renderSidebar - Function to render the sidebar.
+ * @param {Function} props.setavatar - Function to set the avatar.
+ */
 
 function Profile({ userData, userID, renderSidebar, setavatar }) {
     const token = userData.token;
@@ -126,5 +136,15 @@ function Profile({ userData, userID, renderSidebar, setavatar }) {
         </>
     );
 }
+// PropTypes
+Profile.propTypes = {
+    userData: PropTypes.shape({
+        token: PropTypes.string.isRequired,
+        currUserId: PropTypes.string.isRequired,
+    }).isRequired,
+    userID: PropTypes.string.isRequired,
+    renderSidebar: PropTypes.func.isRequired,
+    setavatar: PropTypes.func.isRequired,
+};
 
 export default Profile;
